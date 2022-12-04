@@ -41,11 +41,11 @@ class _UpdateCourseState extends State<UpdateCourse> {
       CollectionReference _course =
           await FirebaseFirestore.instance.collection("courses");
 
-      _course.add(({
+      _course.doc(documentID).update({
         "courseName": _addCourseName.text,
         "courseFee": _addCourseFee.text,
-        "image": widget.courseImage
-      }));
+        "image": _imageUrl
+      });
     } else {
       File _ImageFile = File(_chooseImage!.path);
 
